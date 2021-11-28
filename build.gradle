@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.bawei.registermvvm"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation project(path: ':Resources')
+    implementation project(path: ':Classify')
+    if (isHomeComponent.toBoolean()){
+        implementation project(path: ':Home')
+    }
+
+    implementation project(path: ':MVVMCore')
+    implementation project(path: ':Net')
+    implementation project(path: ':ShopingTrolley')
+    implementation project(path: ':Discover')
+    if (isUserCenterComponent.toBoolean()){
+        implementation project(path: ':UserCenter')
+    }
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //工具类
+    implementation 'com.blankj:utilcode:1.30.6'
+    //网络框架
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    //日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+//OkGo
+    implementation 'com.lzy.net:okgo:3.0.4'
+
+    //RecyclerView 间隔线
+    implementation 'com.yanyusong.y_divideritemdecoration:y_divideritemdecoration:2.0'
+    //RecyclerView 动画
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+    //RecyclerView 万能适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    //核心必须依赖
+    implementation  'com.scwang.smart:refresh-layout-kernel:2.0.3'
+    //经典刷新头
+    implementation  'com.scwang.smart:refresh-header-classics:2.0.3'
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+}
